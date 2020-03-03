@@ -26,9 +26,13 @@ public class ExcelEditor {
         Path file_path = FileSystems.getDefault().getPath("ImportT.xlsx");
         
         XSSFWorkbook MyBook = new XSSFWorkbook(new FileInputStream(file_path.toString()));
-        XSSFSheet MySheet = MyBook.getSheet("Data");
+        XSSFSheet MySheet = MyBook.getSheet("Files/Data");
         int rowCount = MySheet.getPhysicalNumberOfRows();
-        
+        XSSFRow headers = MySheet.getRow(0);
+        for (int i = 0; i < headers.getPhysicalNumberOfCells(); i++) {
+            XSSFCell header = headers.getCell(i);
+            String ColName = header.getStringCellValue();
+        }
     }
 
     void createNewBook() throws IOException {
