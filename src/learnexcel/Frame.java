@@ -22,7 +22,7 @@ public class Frame extends javax.swing.JFrame {
     public Frame() {
         myExcelEditor = new ExcelEditor();
         initComponents();
-        
+        ExportLabel.setVisible(false);
     }
 
     /**
@@ -38,6 +38,7 @@ public class Frame extends javax.swing.JFrame {
         CreateNewBook = new javax.swing.JButton();
         CreateOldBook = new javax.swing.JButton();
         ExportButton = new javax.swing.JButton();
+        ExportLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +57,13 @@ public class Frame extends javax.swing.JFrame {
         });
 
         ExportButton.setText("Эспорт");
+        ExportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExportButtonActionPerformed(evt);
+            }
+        });
+
+        ExportLabel.setText("Эспорт выполнен");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,7 +80,10 @@ public class Frame extends javax.swing.JFrame {
                         .addComponent(CreateNewBook))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(ExportButton)))
+                        .addComponent(ExportButton))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(235, 235, 235)
+                        .addComponent(ExportLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -84,7 +95,9 @@ public class Frame extends javax.swing.JFrame {
                 .addComponent(CreateOldBook)
                 .addGap(33, 33, 33)
                 .addComponent(ExportButton)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(ExportLabel)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -122,6 +135,14 @@ public class Frame extends javax.swing.JFrame {
         }
         System.exit(0);
     }//GEN-LAST:event_CreateOldBookActionPerformed
+
+    private void ExportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportButtonActionPerformed
+        try {
+            myExcelEditor.export();
+        } catch (IOException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ExportButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,6 +183,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton CreateNewBook;
     private javax.swing.JButton CreateOldBook;
     private javax.swing.JButton ExportButton;
+    public static javax.swing.JLabel ExportLabel;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

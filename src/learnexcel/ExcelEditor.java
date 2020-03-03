@@ -16,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -23,16 +24,24 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
 public class ExcelEditor {
     public void export() throws FileNotFoundException, IOException {
-        Path file_path = FileSystems.getDefault().getPath("ImportT.xlsx");
+        Path file_path = FileSystems.getDefault().getPath("Files/ImportT.xlsx");
         
         XSSFWorkbook MyBook = new XSSFWorkbook(new FileInputStream(file_path.toString()));
-        XSSFSheet MySheet = MyBook.getSheet("Files/Data");
+        XSSFSheet MySheet = MyBook.getSheetAt(0);
         int rowCount = MySheet.getPhysicalNumberOfRows();
+        HashMap<String, double[]> MyExport = new HashMap<>();
         XSSFRow headers = MySheet.getRow(0);
         for (int i = 0; i < headers.getPhysicalNumberOfCells(); i++) {
             XSSFCell header = headers.getCell(i);
             String ColName = header.getStringCellValue();
-        }
+            double[] values = new double[rowCount-1];
+            int k=0;
+            for (int j = 1; j < rowCount; j++) {
+                values[k] = MySheet.getRow(j).getCell(i).getNumericCellValue();
+            }
+            MyExport.put(ColName, values);
+            }
+        Frame.ExportLabel.setVisible(true);
     }
 
     void createNewBook() throws IOException {

@@ -59,6 +59,10 @@
                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                           <Component id="ExportButton" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
+                          <Component id="ExportLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -73,7 +77,9 @@
                   <Component id="CreateOldBook" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="ExportButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="143" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="ExportLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="81" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -99,6 +105,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x42d;&#x441;&#x43f;&#x43e;&#x440;&#x442;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExportButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="ExportLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x42d;&#x441;&#x43f;&#x43e;&#x440;&#x442; &#x432;&#x44b;&#x43f;&#x43e;&#x43b;&#x43d;&#x435;&#x43d;"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
