@@ -10,6 +10,7 @@ package learnexcel;
  * @author Женя
  */
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,6 +22,14 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
 public class ExcelEditor {
+    public void export() throws FileNotFoundException, IOException {
+        Path file_path = FileSystems.getDefault().getPath("ImportT.xlsx");
+        
+        XSSFWorkbook MyBook = new XSSFWorkbook(new FileInputStream(file_path.toString()));
+        XSSFSheet MySheet = MyBook.getSheet("Data");
+        int rowCount = MySheet.getPhysicalNumberOfRows();
+        
+    }
 
     void createNewBook() throws IOException {
         Workbook MyWB = new XSSFWorkbook();
