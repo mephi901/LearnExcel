@@ -38,6 +38,7 @@ public class ExcelEditor {
             int k=0;
             for (int j = 1; j < rowCount; j++) {
                 values[k] = MySheet.getRow(j).getCell(i).getNumericCellValue();
+                k++;
             }
             MyExport.put(ColName, values);
             }
